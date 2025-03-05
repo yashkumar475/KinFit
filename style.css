@@ -406,6 +406,36 @@ main .card .label {
 	font-size: 14px;
 	font-weight: 700;
 }
+.info-data .card {
+    transition: transform 0.3s ease-in-out; /* Smooth scaling */
+    cursor: pointer; /* Indicates it's clickable */
+}
+
+.info-data .card:hover {
+    transform: scale(1.1); /* Enlarges the card */
+}
+
+/* Remove default link styling */
+.card-link {
+    text-decoration: none;
+    color: inherit; /* Keeps the default text color */
+    display: block; /* Make the link cover the full card */
+}
+
+/* Smooth scaling effect */
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Scale up on hover */
+.card-link:hover .card {
+    transform: scale(1.1);
+}
+
+
+
+
+
 main .data {
 	display: flex;
 	grid-gap: 20px;
