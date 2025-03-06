@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="page1style.css">
 	<title>KinFit</title>
 </head>
 
@@ -68,7 +68,63 @@
 				<li class="divider">/</li>
 				<li><a href="#" class="active">Stationary Bike</a></li>
 			</ul>
-			
+			<div class="info-data">
+				<a href="#" class="card-link">
+					<div class="card">
+						<div class="head">
+							<div>
+								<h2>RPM</h2>
+							</div>
+							<i class='bx bx-trending-up icon'></i>
+						</div>
+						<div class="chart-container">
+							<div id="chart1"></div>
+						</div>
+					</div>
+				</a>
+
+				<a href="#" class="card-link">
+					<div class="card">
+						<div class="head">
+							<div>
+								<h2>Temperature</h2>
+							</div>
+							<i class='bx bx-trending-up icon'></i>
+						</div>
+						<div class="chart-container">
+							<div id="chart3"></div>
+						</div>
+					</div>
+				</a>
+
+				<a href="#" class="card-link">
+					<div class="card">
+						<div class="head">
+							<div>
+								<h2>Current(A)</h2>
+							</div>
+							<i class='bx bx-trending-up icon'></i>
+						</div>
+						<div class="chart-container">
+							<div id="chart5"></div>
+						</div>
+					</div>
+				</a>
+
+				<a href="#" class="card-link">
+					<div class="card">
+						<div class="head">
+							<div>
+								<h2>Voltage(V)</h2>
+							</div>
+							<i class='bx bx-trending-up icon'></i>
+						</div>
+						<div class="chart-container">
+							<div id="chart4"></div>
+						</div>
+					</div>
+				</a>
+			</div>
 			<div class="data">
 				<div class="content-data">
 					<div class="head">
@@ -86,7 +142,7 @@
 						<div id="chart"></div>
 					</div>
 				</div>
-				
+
 			</div>
 		</main>
 		<!-- MAIN -->
@@ -95,6 +151,7 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<script src="script.js"></script>
+	<script src="page1script.js"></script>
 </body>
 
 </html>
