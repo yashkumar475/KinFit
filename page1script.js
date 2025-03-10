@@ -40,3 +40,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
+
+
+// Table Script
+
+
+async function fetchData() {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await response.json();
+
+    const tbody = document.getElementById('data-body');
+    tbody.innerHTML = '';
+
+    data.slice(0, 10).forEach((item, index) => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>EQP-${1000 + index}</td>
+            <td>${Math.floor(Math.random() * 300)}</td>
+            <td>${Math.floor(Math.random() * 500)}</td>
+            <td>${(Math.random() * 50).toFixed(2)}</td>
+            <td>${new Date().toLocaleString()}</td>
+            <td>${(Math.random() * 45).toFixed(2)}</td>
+            <td>${(Math.random() * 10).toFixed(2)}</td>
+        `;
+
+        row.addEventListener('click', () => {
+            alert(`Equipment ID: EQP-${1000 + index}\nRPM: ${Math.floor(Math.random() * 300)}`);
+        });
+
+        tbody.appendChild(row);
+    });
+}
+
+// Fetch data every 5 seconds (you can change the interval)
+setInterval(fetchData, 5000);
+
+// Initial fetch
+fetchData();
