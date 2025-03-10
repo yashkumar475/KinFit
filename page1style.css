@@ -748,3 +748,33 @@ main .leaderboard-box .player:nth-child(odd) {
 		display: none;
 	}
 }
+
+
+/* Table Styling */
+
+
+h2 {
+	text-align: center;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+th, td {
+	border: 1px solid #ddd;
+	padding: 12px;
+	text-align: center;
+}
+th {
+	background-color: #1775F1;
+	color: white;
+}
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+tr:hover {
+	background-color: #f1c40f;
+	color: #fff;
+	cursor: pointer;
+}
