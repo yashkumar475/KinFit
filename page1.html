@@ -125,25 +125,28 @@
 					</div>
 				</a>
 			</div>
-			<div class="data">
-				<div class="content-data">
-					<div class="head">
-						<h3>Stationary Bike</h3>
-						<div class="menu">
-							<i class='bx bx-dots-horizontal-rounded icon'></i>
-							<ul class="menu-link">
-								<li><a href="#">Edit</a></li>
-								<li><a href="#">Save</a></li>
-								<li><a href="#">Remove</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="chart">
-						<div id="chart"></div>
-					</div>
-				</div>
 
-			</div>
+
+			<table>
+				<thead>
+					<tr>
+						<th>S.no</th>
+						<th>Equipment ID</th>
+						<th>RPM</th>
+						<th>Light (in LUX)</th>
+						<th>Voltage (in V)</th>
+						<th>Timestamp</th>
+						<th>Temperature (°C)</th>
+						<th>Current (in Amp)</th>
+					</tr>
+				</thead>
+				<tbody id="data-body">
+					<!-- Data will be dynamically inserted here -->
+				</tbody>
+			</table>
+
+
+
 		</main>
 		<!-- MAIN -->
 	</section>
