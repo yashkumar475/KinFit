@@ -166,12 +166,6 @@ allProgress.forEach(item => {
 // APEXCHART
 var options = {
 	series: [{
-		name: 'Yearly',
-		data: [51, 60, 88, 81, 152, 369, 640]
-	}, {
-		name: 'Monthly',
-		data: [15, 22, 38, 51, 42, 109, 100]
-	}, {
 		name: 'Daily',
 		data: [2, 12, 25, 32, 34, 52, 41]
 	}],
@@ -198,3 +192,5 @@ var options = {
 
 var chart = new ApexCharts(document.querySelector("#chart"), options);
 chart.render();
+
+
