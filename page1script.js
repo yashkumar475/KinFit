@@ -3,8 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
         { id: "chart1", title: "RPM", value: 75 },
         { id: "chart3", title: "Temperature", value: 45 },
         { id: "chart5", title: "Current", value: 50 },
-        { id: "chart4", title: "Voltage", value: 85 }
+        { id: "chart4", title: "Voltage", value: 85 },
+        { id: "chart6", title: "Total Energy", value: 50 }
     ];
+
+    let charts = {};
 
     chartData.forEach(data => {
         var options = {
@@ -16,14 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
             plotOptions: {
                 radialBar: {
                     startAngle: -90,
-                    endAngle: 90,
+                    endAngle: 270,
                     track: {
                         background: "#e7e7e7",
                         strokeWidth: '97%',
                     },
                     dataLabels: {
-                        name: { offsetY: 20,show: true, fontSize: '16px' },
-                        value: { offsetY: 30, fontSize: '22px', formatter: val => val + "%" }
+                        name: { offsetY: 20, show: true, fontSize: '16px' },
+                        value: { offsetY: 20, fontSize: '18px', formatter: val => val }
                     }
                 }
             },
@@ -31,52 +34,51 @@ document.addEventListener("DOMContentLoaded", function () {
             colors: ["#008FFB"]
         };
 
-        let chartElement = document.createElement("div");
-        chartElement.id = data.id;
-        document.querySelector(".info-data").appendChild(chartElement);
-
-        var chart = new ApexCharts(document.querySelector(`#${data.id}`), options);
+        let chartElement = document.getElementById(data.id);
+        var chart = new ApexCharts(chartElement, options);
         chart.render();
+
+        charts[data.id] = chart; // Store the chart instance
     });
-});
 
+    // Fetch new data and update charts and table
+    async function fetchData() {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const data = await response.json();
 
+        const tbody = document.getElementById('data-body');
+        tbody.innerHTML = '';
 
+        data.slice(0, 10).forEach((item, index) => {
+            const rpm = Math.floor(Math.random() * 300);
+            const voltage = (Math.random() * 50).toFixed(2);
+            const temperature = (Math.random() * 45).toFixed(2);
+            const current = (Math.random() * 10).toFixed(2);
+            const timestamp = new Date().toLocaleString();
 
-// Table Script
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>EQP-${1000 + index}</td>
+                <td>${rpm}</td>
+                <td>${voltage}</td>
+                <td>${timestamp}</td>
+                <td>${temperature}</td>
+                <td>${current}</td>
+            `;
 
+            tbody.appendChild(row);
 
-async function fetchData() {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const data = await response.json();
-
-    const tbody = document.getElementById('data-body');
-    tbody.innerHTML = '';
-
-    data.slice(0, 10).forEach((item, index) => {
-        const row = document.createElement('tr');
-
-        row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>EQP-${1000 + index}</td>
-            <td>${Math.floor(Math.random() * 300)}</td>
-            <td>${Math.floor(Math.random() * 500)}</td>
-            <td>${(Math.random() * 50).toFixed(2)}</td>
-            <td>${new Date().toLocaleString()}</td>
-            <td>${(Math.random() * 45).toFixed(2)}</td>
-            <td>${(Math.random() * 10).toFixed(2)}</td>
-        `;
-
-        row.addEventListener('click', () => {
-            alert(`Equipment ID: EQP-${1000 + index}\nRPM: ${Math.floor(Math.random() * 300)}`);
+            // Update charts
+            charts["chart1"].updateSeries([rpm]); // RPM
+            charts["chart3"].updateSeries([temperature]); // Temperature
+            charts["chart5"].updateSeries([current]); // Current
+            charts["chart4"].updateSeries([voltage]); // Voltage
+            charts["chart6"].updateSeries([voltage]); // Voltage
         });
+    }
 
-        tbody.appendChild(row);
-    });
-}
-
-// Fetch data every 5 seconds (you can change the interval)
-setInterval(fetchData, 5000);
-
-// Initial fetch
-fetchData();
+    // Fetch data every 5 seconds
+    setInterval(fetchData, 5000);
+    fetchData();
+});
