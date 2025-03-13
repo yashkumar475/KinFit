@@ -774,7 +774,7 @@ tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
 tr:hover {
-	background-color: #f1c40f;
+	background-color: #0f407f;
 	color: #fff;
 	cursor: pointer;
 }
